@@ -126,7 +126,7 @@ const Index = () => {
             </div>
             <div className="hidden lg:block">
               <img
-                src="/img/cae60509-f0ae-441b-9b48-1310c2259d7c.jpg"
+                src="/img/5b31d778-b865-41c5-8ef3-13db920702d7.jpg"
                 alt="CMRP Game"
                 className="w-96 h-64 object-cover rounded-lg shadow-2xl"
               />
