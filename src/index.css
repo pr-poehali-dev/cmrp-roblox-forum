@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,11 +15,17 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 17 100% 62%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 198 100% 59%;
+    --secondary-foreground: 0 0% 100%;
+
+    --cmrp-orange: 17 100% 62%;
+    --cmrp-blue: 198 100% 59%;
+    --cmrp-green: 142 71% 45%;
+    --cmrp-red: 0 84% 60%;
+    --cmrp-yellow: 45 93% 58%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
@@ -97,5 +105,30 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Roboto", sans-serif;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: "Orbitron", monospace;
+    font-weight: 700;
+  }
+
+  .cmrp-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--cmrp-orange)) 0%,
+      hsl(var(--cmrp-blue)) 100%
+    );
+  }
+
+  .cmrp-card-hover {
+    transition: all 0.3s ease;
+  }
+
+  .cmrp-card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   }
 }
