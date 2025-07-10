@@ -44,6 +44,14 @@ const Index = () => {
       posts: 167,
       color: "bg-gradient-to-r from-green-500 to-teal-500",
     },
+    {
+      id: "complaints",
+      title: "Жалобы",
+      icon: "AlertTriangle",
+      description: "Нарушения и жалобы",
+      posts: 78,
+      color: "bg-gradient-to-r from-red-500 to-orange-500",
+    },
   ];
 
   const recentPosts = [
@@ -129,16 +137,17 @@ const Index = () => {
 
       <div className="container mx-auto px-4 py-12">
         <Tabs defaultValue="main" className="w-full">
-          <TabsList className="grid grid-cols-5 w-full max-w-2xl mx-auto mb-8">
+          <TabsList className="grid grid-cols-6 w-full max-w-3xl mx-auto mb-8">
             <TabsTrigger value="main">Главная</TabsTrigger>
             <TabsTrigger value="updates">Обновления</TabsTrigger>
             <TabsTrigger value="guides">Гайды</TabsTrigger>
             <TabsTrigger value="bugs">Баг-репорты</TabsTrigger>
             <TabsTrigger value="suggestions">Предложения</TabsTrigger>
+            <TabsTrigger value="complaints">Жалобы</TabsTrigger>
           </TabsList>
 
           <TabsContent value="main" className="space-y-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
               {forumSections.map((section) => (
                 <Card
                   key={section.id}
@@ -334,6 +343,179 @@ const Index = () => {
                 <p className="text-gray-600">
                   Здесь можно предложить новые идеи...
                 </p>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="complaints">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Icon name="AlertTriangle" size={20} />
+                  Жалобы игроков
+                </CardTitle>
+                <CardDescription>
+                  Сообщения о нарушениях правил и некорректном поведении
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                  <h4 className="font-semibold text-red-800 mb-2">
+                    ⚠️ Важно знать
+                  </h4>
+                  <p className="text-sm text-red-700 mb-3">
+                    Ложные жалобы могут привести к санкциям. Предоставляйте
+                    только достоверную информацию.
+                  </p>
+                  <Button className="bg-red-500 hover:bg-red-600 text-white">
+                    <Icon name="FileText" className="mr-2" size={16} />
+                    Подать жалобу
+                  </Button>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Card className="border-orange-200">
+                    <CardContent className="p-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Icon
+                          name="Users"
+                          size={18}
+                          className="text-orange-500"
+                        />
+                        <h4 className="font-semibold">Нарушения в чате</h4>
+                      </div>
+                      <p className="text-sm text-gray-600 mb-3">
+                        Спам, оскорбления, флуд
+                      </p>
+                      <Badge
+                        variant="outline"
+                        className="text-orange-600 border-orange-300"
+                      >
+                        23 активных жалобы
+                      </Badge>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="border-red-200">
+                    <CardContent className="p-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Icon
+                          name="Shield"
+                          size={18}
+                          className="text-red-500"
+                        />
+                        <h4 className="font-semibold">Читы и баги</h4>
+                      </div>
+                      <p className="text-sm text-gray-600 mb-3">
+                        Использование читов, эксплоиты
+                      </p>
+                      <Badge
+                        variant="outline"
+                        className="text-red-600 border-red-300"
+                      >
+                        12 активных жалоб
+                      </Badge>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="border-blue-200">
+                    <CardContent className="p-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Icon
+                          name="UserX"
+                          size={18}
+                          className="text-blue-500"
+                        />
+                        <h4 className="font-semibold">Неадекватное РП</h4>
+                      </div>
+                      <p className="text-sm text-gray-600 mb-3">
+                        Нарушения ролевой игры
+                      </p>
+                      <Badge
+                        variant="outline"
+                        className="text-blue-600 border-blue-300"
+                      >
+                        18 активных жалоб
+                      </Badge>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="border-purple-200">
+                    <CardContent className="p-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Icon
+                          name="AlertCircle"
+                          size={18}
+                          className="text-purple-500"
+                        />
+                        <h4 className="font-semibold">Прочие нарушения</h4>
+                      </div>
+                      <p className="text-sm text-gray-600 mb-3">
+                        Другие виды нарушений
+                      </p>
+                      <Badge
+                        variant="outline"
+                        className="text-purple-600 border-purple-300"
+                      >
+                        25 активных жалоб
+                      </Badge>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="mt-6">
+                  <h4 className="font-semibold mb-3">
+                    Последние рассмотренные жалобы
+                  </h4>
+                  <div className="space-y-3">
+                    {[
+                      {
+                        player: "BadPlayer123",
+                        reason: "Спам в чате",
+                        status: "Принята",
+                        moderator: "ModerCMRP",
+                      },
+                      {
+                        player: "Cheater456",
+                        reason: "Использование читов",
+                        status: "Отклонена",
+                        moderator: "AdminCMRP",
+                      },
+                      {
+                        player: "RuleBreaker789",
+                        reason: "Нарушение РП",
+                        status: "Принята",
+                        moderator: "ModerCMRP",
+                      },
+                    ].map((complaint, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
+                      >
+                        <div className="flex-1">
+                          <p className="font-medium">{complaint.player}</p>
+                          <p className="text-sm text-gray-600">
+                            {complaint.reason}
+                          </p>
+                        </div>
+                        <div className="text-right">
+                          <Badge
+                            className={
+                              complaint.status === "Принята"
+                                ? "bg-green-500"
+                                : "bg-red-500"
+                            }
+                          >
+                            {complaint.status}
+                          </Badge>
+                          <p className="text-xs text-gray-500 mt-1">
+                            от {complaint.moderator}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </TabsContent>
